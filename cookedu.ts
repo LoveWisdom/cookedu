@@ -121,5 +121,21 @@ namespace 库壳教育{
     export function readsoil(pin: AnalogPin): number{
         return pins.analogReadPin(pin);
     }
+
+    /**
+     * get touch
+     * @param pin [0-20]
+     */
+    //% blockId=touch block="引脚检测到触摸 |%pin|"
+    //% weight=130
+    export function gettouch(pin: DigitalPin): boolean{
+        let val = pins.digitalReadPin(pin);
+        if (val == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
     
 }
