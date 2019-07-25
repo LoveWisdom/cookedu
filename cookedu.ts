@@ -114,7 +114,7 @@ namespace 库壳教育{
 
     /**
      * take soil humidity
-     * @param pin [0-4,10]
+     * @param pin [0-4]
      */
     //% blockId=soil block="返回土壤湿度 |%pin|"
     //% weight=115
