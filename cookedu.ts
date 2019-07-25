@@ -5,6 +5,7 @@ enum cook{
 enum PIN{
     A = 0,
     B = 1
+    
 }
 //% weight=5 color=#0000FF icon="\uf780"
 namespace 库壳教育{
@@ -86,7 +87,7 @@ namespace 库壳教育{
      * @param pin [0-1] choose PinA or PinB; eg: 0, 1
      */
     //% blockId=ReadPin block="读取引脚状态 |%pin|"
-    //weight=85 icon="\uf77c"
+    //% weight=85 icon="\uf77c"
     export function ReadPin(pin: PIN): number{
         if (!initialized) {
             initcookedu();
@@ -100,4 +101,15 @@ namespace 库壳教育{
             return val;
         }
     }
+    /**
+     * take led light on
+     * @param pin [0-20]
+     * @param value [0-1] 
+     */
+    //% blockId=led on="点亮led灯 |%pin|"
+    //% weight=100
+    export function light(pin: DigitalPin, value: number): void {
+        pins.digitalWritePin(pin,value);
+    }
+    
 }
