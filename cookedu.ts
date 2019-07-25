@@ -7,7 +7,7 @@ enum PIN{
     B = 1
     
 }
-//% weight=5 color=#0000FF icon="\uf780"
+//% weight=5 color=#0000FF icon="\uf26e"
 namespace 库壳教育{
     const cookedu_address = 0x20
     const cookedu_IOA = 0x00
