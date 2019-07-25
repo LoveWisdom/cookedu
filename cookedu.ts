@@ -103,13 +103,12 @@ namespace 库壳教育{
     }
     /**
      * take led light on
-     * @param pin [0-20]
-     * @param value [0-1] 
+     * @param pin [0-20] 
      */
     //% blockId=ledon block="点亮led灯 |%pin|"
     //% weight=100
-    export function light(pin: DigitalPin, value: number): void {
-        pins.digitalWritePin(pin,value);
+    export function light(pin: DigitalPin): void {
+        pins.digitalWritePin(pin,1);
     }
     
 }
