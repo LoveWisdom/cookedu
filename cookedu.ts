@@ -108,7 +108,18 @@ namespace 库壳教育{
     //% blockId=ledon block="点亮led灯 |%pin|"
     //% weight=100
     export function light(pin: DigitalPin): void {
-        pins.digitalWritePin(pin,1);
+        let HIGH = 1;
+        pins.digitalWritePin(pin,HIGH);
+    }
+
+    /**
+     * take soil humidity
+     * @param pin [0-4,10]
+     */
+    //% blockId=soil block="返回土壤湿度 |%pin|"
+    //% weight=115
+    export function readsoil(pin: AnalogPin): number{
+        return pins.analogReadPin(pin);
     }
     
 }
