@@ -137,5 +137,42 @@ namespace 库壳教育{
             return true;
         }
     }
-    
+    /**
+     * potentiometer
+     * @param pin [0-20]
+     */
+    //% blockId=potentiometer block="电位器 |%pin| 电位"
+    //% weight=145
+    export function potentiometer(pin: AnalogPin): number{
+        let value = pins.analogReadPin(pin);
+        return value; 
+    }
+    /**
+     * motor
+     * @param pin [0-20]
+     * @param value [0-255]
+     */
+    //% blockId=motor block="开启电机 |%pin| 转速"
+    //% weight=160\
+    export function motor(pin: AnalogPin,value: number): void{
+        pins.analogWritePin(pin,value);
+    }
+    /**
+     * humanbeing
+     * @param pin [0-20]
+     */
+    //% blockId=humanbeing block="人体红外模块 |%pin|"
+    //% weight=175
+    export function humanbeing(pin: DigitalPin): boolean{
+        let val = pins.digitalReadPin(pin);
+        if (val == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    /**
+     * 
+     */
 }
