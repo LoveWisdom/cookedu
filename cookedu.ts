@@ -7,7 +7,7 @@ enum PIN{
     B = 1
     
 }
-//% weight=5 color=#0000FF icon="\uf050"
+//% weight=5 color=#0000FF icon="\uf441"
 namespace 库壳教育{
     const cookedu_address = 0x20
     const cookedu_IOA = 0x00
@@ -225,6 +225,6 @@ namespace 库壳教育{
         let value = pins.analogReadPin(pin);
         return value; 
     }
-    
+
 
 }
