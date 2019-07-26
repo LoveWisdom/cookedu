@@ -15,9 +15,7 @@ namespace 库壳教育{
     const cookedu_GPUP = 0x0D
     const cookedu_GPIOA = 0x12
     const cookedu_GPIOB = 0x13
-
     let initialized = false
-
     function write(addr: number, reg: number, value: number): void{
         let buf = pins.createBuffer(2);
         buf[0] = reg;
@@ -152,7 +150,7 @@ namespace 库壳教育{
      * @param pin [0-20]
      * @param value [0-255]
      */
-    //% blockId=motor block="开启电机 |%pin| 转速"
+    //% blockId=motor block="开启电机 |%pin| 转速 |%value|"
     //% weight=160\
     export function motor(pin: AnalogPin,value: number): void{
         pins.analogWritePin(pin,value);
@@ -172,5 +170,61 @@ namespace 库壳教育{
             return true;
         }
     }
+    /**
+     * button
+     * @param pin [0-20]
+     */
+    //% blockId=button block="外接按钮 |%pin| 被按下"
+    //% weight=190
+    export function button(pin: DigitalPin): boolean{
+        let val = pins.digitalReadPin(pin);
+        if (val == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    /**
+     * limit switch
+     * @param pin [0-20]
+     */
+    //% blockId=limitswitch block="限位开关 |%pin| 被按下"
+    //% weight=205
+    export function limitswitch(pin: DigitalPin): boolean{
+        let val = pins.digitalReadPin(pin);
+        if (val == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    /**
+     * horizontal
+     * @param pin [0-20]
+     */
+    //% blockId=horizontal block="检测水平 |%pin|"
+    //% weight=220
+    export function horizontal(pin: DigitalPin): boolean{
+        let val = pins.digitalReadPin(pin);
+        if (val == 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    /**
+     * brightness
+     * @param pin [0-20]
+     */
+    //% blockId=brightness block="亮度 |%pin|"
+    //% weight=235
+    export function brightness(pin: AnalogPin): number{
+        let value = pins.analogReadPin(pin);
+        return value; 
+    }
     
+
 }
