@@ -28,7 +28,7 @@ enum PIN{
     
 }
 //% weight=5 color=#0000FF icon="\uf26e"
-namespace 库壳教育{
+namespace 库壳基础包{
     const TCS34725_ADDRESS          =0x29
     const TCS34725_COMMAND_BIT      =0x80
     const TCS34725_ENABLE           =0x00
