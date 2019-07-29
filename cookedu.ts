@@ -22,11 +22,12 @@ enum REGISTER{
     IOB = 0x01,
 }
 enum PIN{
-    A = 0,
-    B = 1
+    R = 0,
+    G = 1,
+    B = 2
     
 }
-//% weight=5 color=#0000FF icon="\uf441"
+//% weight=5 color=#0000FF icon="\uf26e"
 namespace 库壳教育{
     const TCS34725_ADDRESS          =0x29
     const TCS34725_COMMAND_BIT      =0x80
@@ -129,53 +130,57 @@ namespace 库壳教育{
         initialized = true;
     }
 
-    /**
-     * Read data from the register
-     * @param reg [0-21] register of cookedu; eg:0,15,23
-     */
-    //% blockId=ReadReg block="读取引脚 |%reg| 数据"
-    //% weight=65 icon="\uf13d"
-    export function ReadReg(reg: REGISTER): number{
-        let val = read(cookedu_address, reg);
-        return val;
-    }
+    // /**
+    //  * Read data from the register
+    //  * @param reg [0-21] register of cookedu; eg:0,15,23
+    //  */
+    // //% blockId=ReadReg block="读取引脚 |%reg| 数据"
+    // //% weight=65 icon="\uf13d"
+    // export function ReadReg(reg: REGISTER): number{
+    //     let val = read(cookedu_address, reg);
+    //     return val;
+    // }
 
-    /**
-     * write data to pinA or pinB
-     * @param pin [0-1] choose PinA or PinB; eg: 0, 1
-     * @param value [0-255] pulse of servo; eg: 128, 0, 255
-     */
-    //% blockId=WritePin block="引脚 P |%pin| 输出值 |%value|"
-    //% weight=75 icon="\uf642"
-    //% value.min=0 value.max=255
-    export function WritePin(pin: PIN, value: number): void {
-        if (!initialized) {
-            initcookedu();
-        }
-        if (pin == 0) {
-            write(cookedu_address, cookedu_GPIOA, value);
-        }
-        else {
-            write(cookedu_address, cookedu_GPIOB, value);
-        }
-    } 
+    // /**
+    //  * write data to pinA or pinB
+    //  * @param pin [0-1] choose PinA or PinB; eg: 0, 1
+    //  * @param value [0-255] pulse of servo; eg: 128, 0, 255
+    //  */
+    // //% blockId=WritePin block="引脚 P |%pin| 输出值 |%value|"
+    // //% weight=75 icon="\uf642"
+    // //% value.min=0 value.max=255
+    // export function WritePin(pin: PIN, value: number): void {
+    //     if (!initialized) {
+    //         initcookedu();
+    //     }
+    //     if (pin == 0) {
+    //         write(cookedu_address, cookedu_GPIOA, value);
+    //     }
+    //     else {
+    //         write(cookedu_address, cookedu_GPIOB, value);
+    //     }
+    // } 
     
     /**
      * ReadData From PinA or PinB
-     * @param pin [0-1] choose PinA or PinB; eg: 0, 1
+     * @param pin [0-2] choose PinA or PinB; eg: 0, 1
      */
-    //% blockId=ReadPin block="读取引脚状态 |%pin|"
+    //% blockId=ReadPin block="环境光颜色 |%pin|"
     //% weight=85 icon="\uf77c"
     export function ReadPin(pin: PIN): number{
         if (!initialized) {
             initcookedu();
         }
         if (pin == 0) {
-            let val = read(cookedu_address, cookedu_GPIOA);
+            let val = read(cookedu_address, TCS34725_RDATAL);
+            return val;
+        }
+        else if (pin == 1){
+            let val = read(cookedu_address, TCS34725_GDATAL);
             return val;
         }
         else {
-            let val = read(cookedu_address, cookedu_GPIOB);
+            let val = read(cookedu_address, TCS34725_BDATAL);
             return val;
         }
     }
